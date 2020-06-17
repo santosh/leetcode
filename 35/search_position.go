@@ -8,9 +8,10 @@ Given a sorted array and a target value, return the index if the target is found
 You may assume no duplicates in the array.
 */
 
-// FindIndex takes arr and returns the position of
-// num within it.
-func FindIndex(arr []int, target int) int {
+// FindInsertIndex takes a sorted array arr and a target, and returns
+// the position/index inthe array when position is found.
+// Otherwise return the position where it wound be inserted
+func FindInsertIndex(arr []int, target int) int {
 	minIndex := 0
 	maxIndex := len(arr) - 1
 
@@ -33,5 +34,8 @@ func binarySearch(arr []int, minIndex, maxIndex, target int) int {
 			return binarySearch(arr, minIndex, midIndex-1, target)
 		}
 	}
-	return -1
+
+	// this could have been minIndex or maxIndex,
+	// depending upon how 'if conditions' is written
+	return minIndex
 }
