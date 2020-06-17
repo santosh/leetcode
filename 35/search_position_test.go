@@ -3,23 +3,34 @@ package search
 import "testing"
 
 func TestFindIndex(t *testing.T) {
-	arr := []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	arr := []int{1, 3, 5, 7, 9, 10}
 
-	t.Run("test return -1 if not in index", func(t *testing.T) {
-		want := -1
-		got := FindIndex(arr, 12)
+	t.Run("test return index 4 for target 8", func(t *testing.T) {
+		want := 4
+		got := FindInsertIndex(arr, 8)
 
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertIndex(t, got, want)
 	})
 
-	t.Run("test return 2 for 3", func(t *testing.T) {
-		want := 2
-		got := FindIndex(arr, 3)
+	t.Run("test return index 1 for target 3", func(t *testing.T) {
+		want := 1
+		got := FindInsertIndex(arr, 3)
 
-		if got != want {
-			t.Errorf("got %q want %q", got, want)
-		}
+		assertIndex(t, got, want)
 	})
+
+	t.Run("test return index 0 for target 0", func(t *testing.T) {
+		want := 0
+		got := FindInsertIndex(arr, 0)
+
+		assertIndex(t, got, want)
+	})
+}
+
+func assertIndex(t *testing.T, got, want int) {
+	t.Helper()
+
+	if got != want {
+		t.Errorf("got %d want %d", got, want)
+	}
 }
