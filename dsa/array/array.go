@@ -5,36 +5,59 @@ import "fmt"
 type DVD struct {
 	Name        string
 	ReleaseYear int
-	Director    string
 }
 
-type dvdColletion [15]DVD
+type dvdCollection []DVD
 
 func (d DVD) toString() {
-	if d.Name == "" && d.Director == "" && d.ReleaseYear == 0 {
+	if d.Name == "" && d.ReleaseYear == 0 {
 		fmt.Println(nil)
 	} else {
-		fmt.Printf("%s, directed by %s, released in %d.\n", d.Name, d.Director, d.ReleaseYear)
+		fmt.Printf("%s, released in %d.\n", d.Name, d.ReleaseYear)
 	}
-
 }
 
+func (d dvdCollection) traverse() {
+	for _, v := range d {
+		v.toString()
+	}
+}
+
+func (d *dvdCollection) append(item DVD)  {
+	d.push(item)
+}
+
+func (d *dvdCollection) push(item DVD)  {
+	*d = append(*d, item)
+}
+
+func (d *dvdCollection) pop() (lastItem DVD) {
+	v := *d
+	lastItem = v[len(v)-1]
+	(*d)[len(v)-1] = DVD{}
+	return
+}
+
+// Insert: (elem, index)
+// DeleteFromIndex: (index)
+
 func main() {
-	coll := dvdColletion{}
+	coll := dvdCollection{}
 
-	avengersDVD := DVD{"The Avengers", 2012, "Joss Whedon"}
-	coll[7] = avengersDVD
-	incrediblesDVD := DVD{"The Incredibles", 2004, "Brad Bird"}
-	coll[3] = incrediblesDVD
-	findingDoryDVD := DVD{"Finding Dory", 2016, "Andrew Stanton"}
-	coll[9] = findingDoryDVD
-	lionKingDVD := DVD{"The Lion King", 2019, "Jon Favreau"}
-	coll[2] = lionKingDVD
+	avengersDVD := DVD{Name: "The Avengers", ReleaseYear: 2012}
+	coll.push(avengersDVD)
+	incrediblesDVD := DVD{Name: "The Incredibles", ReleaseYear: 2004}
+	coll.append(incrediblesDVD)
+	findingDoryDVD := DVD{Name: "Finding Dory", ReleaseYear: 2016}
+	coll.push(findingDoryDVD)
+	lionKingDVD := DVD{Name: "The Lion King", ReleaseYear: 2019}
+	coll.append(lionKingDVD)
+	starWarsDVD := DVD{Name: "Star Wars", ReleaseYear: 1977}
+	coll.push(starWarsDVD)
 
-	starWarsDVD := DVD{"Star Wars", 1977, "George Lucus"}
-	coll[3] = starWarsDVD
+	// coll.traverse()
 
-	coll[7].toString()
-	coll[10].toString()
-	coll[3].toString()
+	coll.pop()
+
+	coll.traverse()
 }
