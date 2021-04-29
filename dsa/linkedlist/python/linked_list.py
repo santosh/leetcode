@@ -1,7 +1,8 @@
 class Node:
-    def __init__(self, data)
+    def __init__(self, data):
         self.data = data
         self.nextNode = None
+
 
 class LinkedList:
     def __init__(self):
@@ -45,7 +46,7 @@ class LinkedList:
         actualNode = self.head
 
         while actualNode is not None:
-            print(f"{actualNode.data}")
+            print("{}".format(actualNode.data))
             actualNode = actualNode.nextNode
 
     def remove(self, data):
@@ -64,3 +65,21 @@ class LinkedList:
             self.head = currentNode.nextNode
         else:
             previousNode.nextNode = currentNode.nextNode
+
+
+if __name__ == "__main__":
+    linkedlist = LinkedList()
+
+    linkedlist.insertStart(12)
+    linkedlist.insertStart(122)
+    linkedlist.insertStart(3)
+    linkedlist.insertStart(31)
+
+    linkedlist.traverseList()
+
+    linkedlist.remove(3)
+    linkedlist.remove(12)
+    linkedlist.remove(122)
+    linkedlist.remove(31)
+
+    print(linkedlist.size2())
