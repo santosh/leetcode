@@ -1,9 +1,11 @@
 # Array
 
-- An _array_ is a fundamentally a **list of similar values**.
+- An _array_ is a fundamentally a **list of similar values**. All the elements have to have the **same data type** to be in an array.
 - Elements of an array are **stored in contagious memory** blocks.
-- All the elements have to have the **same data type**. 
-- Arrays have a fixed length; array length **cannot be changed** once created. 
+- Arrays have a fixed length; array length **cannot be changed** once created.
+- An element in array is indexed by `key`. Due to indexing, random access is possible.
+- Can have multiple dimensions. But 1 & 2 dimensions are popular. E.g. for storing a matrix, you must have 2 dimensional array.
+- Applications: Lookup Tables / Hashtables, Heaps.
 
 An array has usually 3 attributes:
 
@@ -41,13 +43,13 @@ To access `Quinten`, we can do `name[2][1]`. Similarly, Peter is at `name[0][3]`
 
 Operations on Array:
 
-1. Add/Insert
+1. add/append/insert
 
-Takes `O(n)` when inserting in middle/start of array. That's because we have to shift each element to right.
+Takes `O(n)` when inserting in middle/start of array. That's because we have to shift each element to right. Adding to end is `O(1)` by design.
 
 Variations: add, addFirst, addLast, addByIndex
 
-2. Get/Access
+2. get/access
 
 - Takes `O(1)` to access element.
 
@@ -59,13 +61,11 @@ Takes `O(n)` when using linear search.
 
 4. Remove/Delete
 
-Deleting also takes O(n) because we are considering worst case. Every element at the right of the array needs to be shifted to the left.
+Deleting also takes `O(n)` because we are considering worst case. Every element at the right of the array needs to be shifted to the left. Removing from end is `O(1)`.
 
 Advantages:
-
 - As compared to LinkedList, data in the array can be access in O(1) time.
 
 Disadvantages:
-
 - The size of an array cannot be changed. Space can be wasted if allocated space are not used.
 - Inserting and deleting are not efficient.
