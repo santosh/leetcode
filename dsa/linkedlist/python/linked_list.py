@@ -37,12 +37,12 @@ class LinkedList:
         newNode = Node(data)
         actualNode = self.head
 
-        if self.head is None:
+        if actualNode is None:
             self.insertStart(data)
             return
 
         while actualNode.nextNode is not None:
-            actualNode = actualNode.newNode
+            actualNode = actualNode.nextNode
 
         actualNode.nextNode = newNode
 
