@@ -37,6 +37,10 @@ class LinkedList:
         newNode = Node(data)
         actualNode = self.head
 
+        if self.head is None:
+            self.insertStart(data)
+            return
+
         while actualNode.nextNode is not None:
             actualNode = actualNode.newNode
 
@@ -70,16 +74,18 @@ class LinkedList:
 if __name__ == "__main__":
     linkedlist = LinkedList()
 
-    linkedlist.insertStart(12)
-    linkedlist.insertStart(122)
-    linkedlist.insertStart(3)
-    linkedlist.insertStart(31)
-
+    # linkedlist.insertStart(2)
+    linkedlist.insertEnd(12)
     linkedlist.traverseList()
+    # linkedlist.insertStart(122)
+    # linkedlist.insertStart(3)
+    # linkedlist.insertStart(31)
 
-    linkedlist.remove(3)
-    linkedlist.remove(12)
-    linkedlist.remove(122)
-    linkedlist.remove(31)
+    # linkedlist.traverseList()
 
-    print(linkedlist.size2())
+    # linkedlist.remove(3)
+    # linkedlist.remove(12)
+    # linkedlist.remove(122)
+    # linkedlist.remove(31)
+
+    # print(linkedlist.size2())
