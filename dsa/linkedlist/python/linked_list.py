@@ -53,6 +53,21 @@ class LinkedList:
             print("{}".format(actualNode.data))
             actualNode = actualNode.nextNode
 
+    def removeFromEnd(self):
+        actualNode = self.head
+
+        if actualNode is None:
+            return
+
+        if actualNode.nextNode is None:
+            self.head = None
+            return
+        
+        while actualNode.nextNode.nextNode is not None:
+            actualNode = actualNode.nextNode
+
+        actualNode.nextNode = None
+
     def remove(self, data):
         if self.head is None:
             return
@@ -75,7 +90,10 @@ if __name__ == "__main__":
     linkedlist = LinkedList()
 
     # linkedlist.insertStart(2)
-    linkedlist.insertEnd(12)
+    # linkedlist.insertEnd(12)
+    linkedlist.traverseList()
+    print()
+    linkedlist.removeFromEnd()
     linkedlist.traverseList()
     # linkedlist.insertStart(122)
     # linkedlist.insertStart(3)
