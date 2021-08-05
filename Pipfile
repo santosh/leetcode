@@ -6,9 +6,9 @@ verify_ssl = true
 [dev-packages]
 black = "*"
 pylint = "*"
-pytest = "*"
 
 [packages]
+pytest = "*"
 
 [requires]
 python_version = "3.7"
