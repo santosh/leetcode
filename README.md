@@ -1,11 +1,7 @@
 # LeetCode Solutions
 
-# 7. Reverse Integer
+## Instruction
 
-# 8. String to Integer
+Commit message template:
 
-# 9. Palindrome Number
-
-# 35. Search Insert Position
-
-# 287. Find the Duplicate Number
+    Add: <Title of Leetcode problem> #<dstag> #<langtag>
