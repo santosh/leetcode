@@ -1,11 +1,31 @@
 class TreeNode:
-    def __init__(self, data) -> None:
+    def __init__(self, data):
         self.data = data
         self.left = None
         self.right = None
 
-    def insert(self, node):
-        pass
+class BinarySearchTree:
+    def __init__(self):
+        self.root = None
+
+    def insert(self, data):
+        if not self.root:
+            self.root = TreeNode(data)
+        else:
+            self.insertNode(data, self.root)
+
+    def insertNode(self, data, node):
+        if data < node.data:
+            if node.leftChild:
+                self.insertNode(data, node.leftChild)
+            else:
+                node.leftChild = TreeNode(data)
+        else:
+            if node.rightChild:
+                self.insertNode(data, node.rightChild)
+            else:
+                node.rightChild = TreeNode(data)
+
 
 def traversePreOrder(root):
     if root:
@@ -47,8 +67,8 @@ def traverseLevelOrder(root):
 tn = TreeNode(10)
 tn.left = TreeNode(5)
 tn.right = TreeNode(15)
-tn.left.left = TreeNode(3)
-tn.left.right = TreeNode(1)
+tn.left.left = TreeNode(1)
+tn.left.right = TreeNode(3)
 
 print("Preorder order traversal of binary tree:")
 traversePreOrder(tn)
