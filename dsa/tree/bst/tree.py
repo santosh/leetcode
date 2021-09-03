@@ -1,8 +1,8 @@
 class TreeNode:
     def __init__(self, data):
         self.data = data
-        self.left = None
-        self.right = None
+        self.leftChild = None
+        self.rightChild = None
 
 class BinarySearchTree:
     def __init__(self):
@@ -46,6 +46,47 @@ class BinarySearchTree:
 
         return node.data
 
+    def remove(self, data):
+        if self.root:
+            self.root = self.removeNode(data, self.root)
+
+    def removeNode(self, data, node):
+        if not node:
+            return node
+
+        if data < node.data:
+            node.leftChild = self.removeNode(data, node.leftChild)
+        elif data > node.data:
+            node.rightChild = self.removeNode(data, node.rightChild)
+        else:
+            if not node.leftChild and not node.rightChild:
+                print("Removing a leaf node...")
+                del node
+                return None
+
+            if not self.leftChild:
+                print("Removing node with single right child...")
+                tempNode = node.rightChild
+                del node
+                return tempNode
+            elif note self.rightChild:
+                print("Removing a node with single left child...")
+                tempNode = node.leftChild
+                del node
+                return tempNode
+
+            print("Removing node with two children...")
+            tempNode = self.getPredecessor(node.leftChild)
+            node.data = tempNode.data
+            node.leftChild = self.removeNode(tempNode.data, node.leftChild)
+
+    def getPredecessor(self, node):
+        if node.rightChild:
+            return self.getPredessor(node.rightChild)
+
+        return node
+
+
     def traverse(self):
         if self.root:
             self.traverseInOrder(self.root)
@@ -54,13 +95,13 @@ class BinarySearchTree:
         if node.leftChild:
             self.traverseInOrder(node.leftChild)
 
-        print("%s ", node.data)
+        print(node.data)
 
         if node.rightChild:
             self.traverseInOrder(node.rightChild)
 
     def traversePreOrder(self, node):
-        print("%s ", node.data)
+        print(node.data)
 
         if node.leftChild:
             self.traversePreOrder(node.leftChild)
@@ -75,12 +116,7 @@ class BinarySearchTree:
         if node.rightChild:
             self.traversePostOrder(node.rightChild)
 
-        print("%s ", node.data)
-
-    if root:
-        traversePostOrder(root.left)
-        traversePostOrder(root.right)
-        print(root.data)
+        print(node.data)
 
 def traverseLevelOrder(root):
     if root is None:
