@@ -46,20 +46,37 @@ class BinarySearchTree:
 
         return node.data
 
+    def traverse(self):
+        if self.root:
+            self.traverseInOrder(self.root)
 
-def traversePreOrder(root):
-    if root:
-        print(root.data)
-        traversePreOrder(root.left)
-        traversePreOrder(root.right)
+    def traverseInOrder(self, node):
+        if node.leftChild:
+            self.traverseInOrder(node.leftChild)
 
-def traverseInOrder(root):
-    if root:
-        traverseInOrder(root.left)
-        print(root.data)
-        traverseInOrder(root.right)
+        print("%s ", node.data)
 
-def traversePostOrder(root):
+        if node.rightChild:
+            self.traverseInOrder(node.rightChild)
+
+    def traversePreOrder(self, node):
+        print("%s ", node.data)
+
+        if node.leftChild:
+            self.traversePreOrder(node.leftChild)
+
+        if node.rightChild:
+            self.traversePreOrder(node.rightChild)
+
+    def traversePostOrder(self, node):
+        if node.leftChild:
+            self.traversePostOrder(node.leftChild)
+
+        if node.rightChild:
+            self.traversePostOrder(node.rightChild)
+
+        print("%s ", node.data)
+
     if root:
         traversePostOrder(root.left)
         traversePostOrder(root.right)
