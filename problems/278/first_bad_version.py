@@ -18,7 +18,7 @@ class Solution:
 
             if isBadVersion(mid_index) == True:
                 right_index = mid_index - 1
-            else::
+            else:
                 left_index = mid_index + 1
 
         return left_index
